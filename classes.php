@@ -2,14 +2,17 @@
 
 class Human{
     public $name = '';
-    private $gender= '';
+    private $gender= 'male';
+    protected $education = 'MBBS';
 
     function __construct($name)
     {
-        echo __CLASS__ . 'is constructing..........';
+//        echo __CLASS__ . 'is constructing..........';
         $this->name = $name;
     }
-
+    function __call($name, $argument){
+        echo $name. ' is not available';
+    }
     public function walk(){
         $this->think();
         echo $this->name . ' walking.........<br>';
@@ -34,10 +37,11 @@ class Human{
 }
 
 $arup = new Human('Arup');
+$arup->operates();
 $arup->walk();
-sleep(10);
 
-echo 'another process is running';
+
+//echo 'another process is running';
 //$arup->name = 'Arup';
 //$arup->walk();
 //$arup->setGender('male');
